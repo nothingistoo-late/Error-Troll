@@ -11,7 +11,7 @@ namespace ErrorTroll
     public partial class MainWindow : Window
     {
         private int errorCount = 0;
-        private const int maxErrors = 50; // Số lỗi tối đa (có thể tăng để che kín màn hình)
+        private const int maxErrors = 10; // Số lỗi tối đa (có thể tăng để che kín màn hình)
         private Random random = new Random();
 
         public MainWindow()
@@ -29,11 +29,7 @@ namespace ErrorTroll
             MessageBoxResult result = MessageBox.Show("System failure detected!", "Critical Error",
                 MessageBoxButton.OKCancel, MessageBoxImage.Error, MessageBoxResult.OK,
                 MessageBoxOptions.DefaultDesktopOnly);
-
-            if (result == MessageBoxResult.Cancel)
-            {
-                CreateErrorStorm();
-            }
+            CreateErrorStorm();
         }
 
         private async void CreateErrorStorm()
